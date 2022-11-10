@@ -1,7 +1,7 @@
 from utils import *
 
 class Account:
-    
+
     def __init__(self, number, client, balance, credit_limit=300) -> None:
         
         self.__number = number
@@ -26,7 +26,7 @@ class Account:
         self.__credit_limit = value
         print(f":: CREDIT LIMIT CHANGED ::")
         print(f"[Acc Number]: {self.__number}\n[Credit Limit]: ${money_output(self.credit_limit)}\n")
-
+        
         return 1
 
     def general_info(self):
@@ -68,10 +68,10 @@ class Account:
                     diff = (self.balance - value) * -1
                     self.__balance = 0
                     self.__balance = float_treatment(self.balance)
-                    print(f"[VALUE WITHDRAWN]: ${money_output(value)} (Credit Limit remaining: ${self.credit_limit - 1})")
+                    print(f"[VALUE WITHDRAWN]: ${money_output(value)} (Credit Limit remaining: ${self.credit_limit - diff})")
                     print(f"[WARNING]: A difference of ${money_output(diff)} will be withdrawn from your account credit limit.")
                     print(f"[WARNING]: Some taxes and fees will probably be deduct from the account balance next month!\n")
-                    self.credit_limit = self.credit_limit - 1
+                    self.credit_limit = self.credit_limit - diff
                 else:
 
                     self.__balance -= value
